@@ -1,0 +1,13 @@
+/* Header genel stilleri */
+.toolbar{
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.button{
+    font-size: 18px !important;
+}
+.dropdownButton{
+    font-size: 18px !important;
+}

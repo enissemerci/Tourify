@@ -1,0 +1,14 @@
+.video-container {
+    position: relative;
+    width: 100vw;
+    height: 60vh;
+    overflow: hidden;
+    top: -100px; /* Konteyneri 100px yukarı kaydırır */
+    z-index: 0;  /* Video konteynerinin z-index değerini belirler */
+  }
+  
+  .video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }

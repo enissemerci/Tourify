@@ -1,0 +1,44 @@
+.other-places-container h1,p{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.other-places-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.carousel-card {
+  cursor: pointer;
+  margin: 20px !important;
+}
+
+.place-card {
+  max-width: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  margin: 20px !important;
+}
+
+.place-card:hover {
+  transform: scale(1.05);
+}
+
+.carousel-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+  
+@media (max-width: 960px) {
+  .carousel .slide {
+    width: 50%; 
+  }
+}
+
+@media (max-width: 600px) {
+  .carousel .slide {
+    width: 100%; 
+  }
+}
