@@ -11,6 +11,7 @@ import {
   Button,
 } from "@mui/material";
 import "./OurChoices.css";
+import gorsel from "../../images/denemeG.png"
 export const OurChoices = () => {
   const [open, setOpen] = useState(false);
   const [selectedPlace, setSelectedPlace] = useState(null);
@@ -21,19 +22,19 @@ export const OurChoices = () => {
       name: "Mekan 1",
       description: "Kısa açıklama 1",
       details: "Detaylı açıklama 1",
-      image: "/images/denemeG.png",
+      image: gorsel,
     },
     {
       name: "Mekan 2",
       description: "Kısa açıklama 2",
       details: "Detaylı açıklama 2",
-      image: "/images/denemeG.png",
+      image: gorsel,
     },
     {
       name: "Mekan 3",
       description: "Kısa açıklama 3",
       details: "Detaylı açıklama 3",
-      image: "/images/denemeG.png",
+      image: gorsel,
     },
     
   ];

@@ -2,6 +2,8 @@ import React from "react";
 import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom"; // Yönlendirme için
 import "./CategoryCards.css";
+import gorsel from "../../images/denemeG.png"
+import kategori from "../../images/kategori.webp"
 
 export const CategoryCards = () => {
   const navigate = useNavigate();
@@ -23,22 +25,22 @@ export const CategoryCards = () => {
     {
       name: "Şehirler",
       description: "Explore beautiful cities",
-      image: "/images/denemeG.png",
+      image: kategori,
     },
     {
       name: "Etkinlikler",
       description: "Find exciting events",
-      image: "/images/denemeG.png",
+      image: kategori,
     },
     {
       name: "Restoranlar",
       description: "Discover top restaurants",
-      image: "/images/denemeG.png",
+      image: kategori,
     },
     {
       name: "Ev",
       description: "Back to the homepage",
-      image: "/images/denemeG.png",
+      image: kategori,
     },
   ];
 

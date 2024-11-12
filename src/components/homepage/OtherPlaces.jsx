@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { Dialog, DialogContent, Card, CardMedia, CardContent, Typography } from '@mui/material';
 import { Carousel } from 'react-responsive-carousel';
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // Carousel için stiller
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "./OtherPlaces.css"
-
+import gorsel from "../../images/images.jpeg"
 const places = [
-  { title: "Paris", image: "/images/images.jpeg", description: "Paris, City of Light!" },
-  { title: "Tokyo", image: "/images/images.jpeg", description: "Tokyo, blend of tradition and future." },
-  { title: "New York", image: "/images/images.jpeg", description: "The Big Apple awaits!" },
-  { title: "Istanbul", image: "/images/images.jpeg", description: "Historic Istanbul." },
-  { title: "Dubai", image: "/images/images.jpeg", description: "Dubai, city of luxury." },
+  { title: "Paris", image: gorsel, description: "Paris, City of Light!" },
+  { title: "Tokyo", image: gorsel, description: "Tokyo, blend of tradition and future." },
+  { title: "New York", image: gorsel, description: "The Big Apple awaits!" },
+  { title: "Istanbul", image: gorsel, description: "Historic Istanbul." },
+  { title: "Dubai", image: gorsel, description: "Dubai, city of luxury." },
   // Diğer mekanlar burada devam edebilir
 ];
 

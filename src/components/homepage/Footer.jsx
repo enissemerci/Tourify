@@ -31,47 +31,56 @@ export const Footer = () => {
         </div>
       </div>
       <div className="footer-socials">
-      <IconButton
-          component="a"
-          href="https://www.facebook.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Facebook"
-          sx={{ color: "white" }}
-        >
-          <Facebook fontSize="large" />
-        </IconButton>
-        <IconButton
-          component="a"
-          href="https://www.instagram.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Instagram"
-          sx={{ color: "white" }}
-        >
-          <Instagram fontSize="large" />
-        </IconButton>
-        <IconButton
-          component="a"
-          href="https://www.twitter.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Twitter"
-          sx={{ color: "white" }}
-        >
-          <Twitter fontSize="large" />
-        </IconButton>
-        <IconButton
-          component="a"
-          href="https://www.linkedin.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="LinkedIn"
-          sx={{ color: "white" }}
-        >
-          <LinkedIn fontSize="large" />
-        </IconButton>
+        <p>
+          Bir sonraki seyahatinizde size rehberlik etmekten mutluluk duyarız.
+          Keşfetmek istediğiniz her yerin detaylarını Tourify’da bulabilir,
+          kültür, lezzet ve macera dolu bir yolculuğa bizimle çıkabilirsiniz.
+          İster şehirlerin tarihi dokusunu, ister modern hayatın dinamiklerini
+          deneyimlemek isteyin; Tourify her adımda yanınızda.
+        </p>
+        <div className="icons">
+          <IconButton
+            component="a"
+            href="https://www.facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+            sx={{ color: "white" }}
+          >
+            <Facebook fontSize="large" />
+          </IconButton>
+          <IconButton
+            component="a"
+            href="https://www.instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            sx={{ color: "white" }}
+          >
+            <Instagram fontSize="large" />
+          </IconButton>
+          <IconButton
+            component="a"
+            href="https://www.twitter.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Twitter"
+            sx={{ color: "white" }}
+          >
+            <Twitter fontSize="large" />
+          </IconButton>
+          <IconButton
+            component="a"
+            href="https://www.linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            sx={{ color: "white" }}
+          >
+            <LinkedIn fontSize="large" />
+          </IconButton>
+        </div>
       </div>
-      </div>
+    </div>
   );
 };

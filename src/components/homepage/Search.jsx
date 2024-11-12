@@ -28,6 +28,7 @@ export const Search = () => {
 
   return (
     <div className="search-container">
+      <h1>Tourify ile Dünyayı Keşfedin!</h1>
       <div className="search-box">
         <SearchIcon className="search-icon" /> {/* Material UI Search icon */}
         <input
