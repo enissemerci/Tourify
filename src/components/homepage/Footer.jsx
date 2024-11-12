@@ -1,6 +1,6 @@
 import React from "react";
 import "./Footer.css";
-import logo from "../../../public/images/logoB.png";
+import logo from "../../images/logoB.png";
 import { Facebook, Instagram, Twitter, LinkedIn } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 
