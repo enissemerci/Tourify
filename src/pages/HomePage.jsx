@@ -5,7 +5,6 @@ import { Search } from "../components/homepage/Search";
 import { CategoryCards } from "../components/homepage/CategoryCards";
 import { OurChoices } from "../components/homepage/OurChoices";
 import { OtherPlaces } from "../components/homepage/OtherPlaces";
-import { Footer } from "../components/homepage/Footer";
 
 export const HomePage = () => {
   return (
@@ -16,7 +15,6 @@ export const HomePage = () => {
       <CategoryCards/>
       <OurChoices/>
       <OtherPlaces/>
-      <Footer/>
     </div>
   );
 };
