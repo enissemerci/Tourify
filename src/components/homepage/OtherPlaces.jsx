@@ -3,14 +3,20 @@ import { Dialog, DialogContent, Card, CardMedia, CardContent, Typography } from 
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "./OtherPlaces.css"
-import gorsel from "../../images/images.jpeg"
+import tokyo from "../../images/cities/tokyo.webp"
+import paris from "../../images/cities/paris.webp"
+
 const places = [
-  { title: "Paris", image: gorsel, description: "Paris, City of Light!" },
-  { title: "Tokyo", image: gorsel, description: "Tokyo, blend of tradition and future." },
-  { title: "New York", image: gorsel, description: "The Big Apple awaits!" },
-  { title: "Istanbul", image: gorsel, description: "Historic Istanbul." },
-  { title: "Dubai", image: gorsel, description: "Dubai, city of luxury." },
-  // Diğer mekanlar burada devam edebilir
+  { title: "Paris", image: paris, description: "Işık Şehri Paris! Eyfel Kulesi, Louvre Müzesi ve Seine Nehri kıyısındaki kafeleriyle ünlü, aşk ve sanat dolu bir şehir." },
+  { title: "Tokyo", image: tokyo, description: "Tokyo, gelenekle geleceğin buluştuğu şehir. Tapınaklar ve gökdelenlerin bir araya geldiği bu şehir, Japon kültürü ve teknolojiyi bir arada sunar." },
+  { title: "New York", image: tokyo, description: "Büyük Elma sizi bekliyor! Özgürlük Heykeli, Central Park ve Broadway ile New York, farklı kültürlerin buluşma noktasıdır." },
+  { title: "İstanbul", image: tokyo, description: "Tarihi İstanbul. Boğaziçi kıyısında yer alan, Asya ve Avrupa’yı birleştiren bu şehir, Ayasofya, Sultanahmet Camii ve Kapalıçarşı gibi tarihi yapılarıyla ünlüdür." },
+  { title: "Dubai", image: tokyo, description: "Lüksün şehri Dubai. Çölde yükselen gökdelenler, lüks alışveriş merkezleri ve Burj Khalifa gibi simgeleriyle modernizmin ve gösterişin merkezi." },
+  { title: "Sidney", image: tokyo, description: "Opera Binası’nın evi Sidney! Avustralya’nın gözde şehri, geniş plajları, sıcak iklimi ve simgesel yapılarıyla her yıl turistleri kendine çeker." },
+  { title: "Rio de Janeiro", image: tokyo, description: "Samba ve karnavalın merkezi Rio! Brezilya’nın göz kamaştırıcı şehri, Kurtarıcı İsa Heykeli, plajları ve dünyaca ünlü karnavalıyla bilinir." },
+  { title: "Roma", image: tokyo, description: "Batı uygarlığının beşiği Roma! Kolezyum, Pantheon ve Vatikan gibi tarihi anıtlarıyla İtalya’nın başkenti, kültür ve tarih hazinesi sunar." },
+  { title: "Cape Town", image: tokyo, description: "Masa Dağı’nın şehri Cape Town. Güney Afrika'nın göz alıcı doğası, plajları ve üzüm bağlarıyla ünlüdür." },
+  { title: "Bangkok", image: tokyo, description: "Tayland’ın renkli başkenti Bangkok. Tapınakları, hareketli sokak pazarı ve zengin mutfağıyla egzotik bir atmosfer sunar." },
 ];
 
 export const OtherPlaces = () => {
