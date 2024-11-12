@@ -67,7 +67,8 @@ export const ExplorePage = () => {
           marginBottom: "50px",
           marginTop: "50px",
           display: "block",
-          marginTop: "50px",
+          marginTop: "51px",
+
         }}
       />
 
