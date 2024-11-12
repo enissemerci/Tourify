@@ -10,7 +10,7 @@ import {
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown"; // İkonu import et
 
 import "./Header.css";
-import logo from "../../../public/images/logob.png";
+import logo from "../../../public/images/logoB.png";
 function Header() {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
