@@ -12,7 +12,7 @@ export const Events = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get("https://localhost:5000/api/Events/upcoming"); // API URL'nizi buraya yazın
+        const response = await axios.get("https://localhost:7130/api/Events/upcoming"); // API URL'nizi buraya yazın
         console.log("Veri başarıyla alındı:", response.data); // Başarılı veri döndüğünde logla
         setEvents(response.data);
       } catch (error) {
