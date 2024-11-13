@@ -7,17 +7,17 @@ import "../components/events/EventCard.css";
 
 export const Events = () => {
   const [events, setEvents] = useState([]);
-  const [error, setError] = useState(null); // Hata durumunu tutmak için
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get("https://localhost:7130/api/Events/upcoming"); // API URL'nizi buraya yazın
-        console.log("Veri başarıyla alındı:", response.data); // Başarılı veri döndüğünde logla
-        setEvents(response.data);
+        const response = await axios.get("https://localhost:7130/api/Events/upcoming");
+        console.log("Veri başarıyla alındı:", response.data);
+        setEvents(response.data.slice(0, 18)); // İlk 18 etkinliği al
       } catch (error) {
-        console.error("Etkinlikleri alırken bir hata oluştu:", error.message); // Hata mesajını logla
-        setError("Etkinlikleri alırken bir hata oluştu."); // Kullanıcıya gösterilecek hata mesajı
+        console.error("Etkinlikleri alırken bir hata oluştu:", error.message);
+        setError("Etkinlikleri alırken bir hata oluştu.");
       }
     };
 

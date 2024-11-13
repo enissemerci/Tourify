@@ -26,7 +26,7 @@ export const EventCard = ({ event }) => {
         <CardMedia
           component="img"
           height="200"
-          image={event.imageUrl}  // API'den dönen imageUrl
+          image={event.imageUrl}  
           alt={event.name}
         />
         <CardContent>
