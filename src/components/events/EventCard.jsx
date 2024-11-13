@@ -60,9 +60,6 @@ export const EventCard = ({ event }) => {
           <Typography gutterBottom>Konum: {event.location}</Typography>
           <Typography gutterBottom>Şehir: {event.city}</Typography>
           <Typography gutterBottom>Ülke: {event.country}</Typography>
-          <Typography gutterBottom>
-            Web Sitesi: <a href={event.url}></a>
-          </Typography>
         </DialogContent>
       </Dialog>
     </>

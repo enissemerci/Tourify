@@ -10,7 +10,8 @@ export const Events = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchEvents = async () => {
+    // useEffect'in kendisini async olarak tanımlamak
+    (async () => {
       try {
         const response = await axios.get("https://localhost:7130/api/Events/city/{Istanbul}");
         console.log("Veri başarıyla alındı:", response.data);
@@ -19,9 +20,7 @@ export const Events = () => {
         console.error("Etkinlikleri alırken bir hata oluştu:", error.message);
         setError("Etkinlikleri alırken bir hata oluştu.");
       }
-    };
-
-    fetchEvents();
+    })();
   }, []);
 
   return (
