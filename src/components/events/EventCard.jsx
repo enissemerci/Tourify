@@ -8,7 +8,7 @@ import {
   DialogTitle,
   DialogContent,
 } from "@mui/material";
-
+import gorsel from "../../images/categoryEvents.webp"
 export const EventCard = ({ event }) => {
   const [open, setOpen] = useState(false);
 
@@ -26,7 +26,7 @@ export const EventCard = ({ event }) => {
         <CardMedia
           component="img"
           height="200"
-          image={event.imageUrl || "default_image_url"}  // Görsel yoksa varsayılan bir görsel koyabilirsiniz
+          image={event.imageUrl || "default_image_url"}
           alt={event.name}
         />
         <CardContent>
@@ -43,7 +43,7 @@ export const EventCard = ({ event }) => {
           <CardMedia
             component="img"
             height="200"
-            image={event.imageUrl || "default_image_url"}
+            image={event.imageUrl || gorsel}
             alt={event.name}
             style={{ marginBottom: 16 }}
           />
