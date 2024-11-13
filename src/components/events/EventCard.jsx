@@ -8,7 +8,7 @@ import {
   DialogTitle,
   DialogContent,
 } from "@mui/material";
-import gorsel from "../../images/categoryEvents.webp"
+import gorsel from "../../images/categoryEvents.webp";
 export const EventCard = ({ event }) => {
   const [open, setOpen] = useState(false);
 
@@ -22,7 +22,10 @@ export const EventCard = ({ event }) => {
 
   return (
     <>
-      <Card onClick={handleClickOpen} style={{ cursor: "pointer", width: 300, margin: 16 }}>
+      <Card
+        onClick={handleClickOpen}
+        style={{ cursor: "pointer", width: 300, margin: 16 }}
+      >
         <CardMedia
           component="img"
           height="200"
@@ -31,7 +34,7 @@ export const EventCard = ({ event }) => {
         />
         <CardContent>
           <Typography variant="h6" component="div">
-            {event.name}  
+            {event.name}
           </Typography>
         </CardContent>
       </Card>
@@ -48,13 +51,17 @@ export const EventCard = ({ event }) => {
             style={{ marginBottom: 16 }}
           />
           <Typography gutterBottom>{event.description}</Typography>
-          <Typography gutterBottom>Başlama Tarihi: {new Date(event.startDate).toLocaleString()}</Typography>
-          <Typography gutterBottom>Bitiş Tarihi: {new Date(event.endDate).toLocaleString()}</Typography>
+          <Typography gutterBottom>
+            Başlama Tarihi: {new Date(event.startDate).toLocaleString()}
+          </Typography>
+          <Typography gutterBottom>
+            Bitiş Tarihi: {new Date(event.endDate).toLocaleString()}
+          </Typography>
           <Typography gutterBottom>Konum: {event.location}</Typography>
           <Typography gutterBottom>Şehir: {event.city}</Typography>
           <Typography gutterBottom>Ülke: {event.country}</Typography>
           <Typography gutterBottom>
-            Bilet Fiyatı: {event.isFree ? "Ücretsiz" : `${event.minPrice} - ${event.maxPrice} TL`}
+            Web Sitesi: <a href={event.url}></a>
           </Typography>
         </DialogContent>
       </Dialog>
