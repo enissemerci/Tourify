@@ -26,7 +26,7 @@ export const EventCard = ({ event }) => {
         <CardMedia
           component="img"
           height="200"
-          image={event.imageUrl || "default_image_url"}
+          image={event.imageUrl || gorsel}
           alt={event.name}
         />
         <CardContent>
