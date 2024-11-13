@@ -1,5 +1,13 @@
-import React, { useState } from 'react';
-import { Card, CardMedia, CardContent, Typography, Dialog, DialogTitle, DialogContent } from '@mui/material';
+import React, { useState } from "react";
+import {
+  Card,
+  CardMedia,
+  CardContent,
+  Typography,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+} from "@mui/material";
 
 export const EventCard = ({ event }) => {
   const [open, setOpen] = useState(false);
@@ -14,16 +22,16 @@ export const EventCard = ({ event }) => {
 
   return (
     <>
-      <Card onClick={handleClickOpen} style={{ cursor: 'pointer', width: 300, margin: 16 }}>
+      <Card onClick={handleClickOpen} style={{ cursor: "pointer", width: 300, margin: 16 }}>
         <CardMedia
           component="img"
           height="200"
-          image={event.image}
+          image={event.imageUrl}  // API'den dönen imageUrl
           alt={event.name}
         />
         <CardContent>
           <Typography variant="h6" component="div">
-            {event.name}
+            {event.name}  // API'den dönen name
           </Typography>
         </CardContent>
       </Card>
@@ -35,14 +43,17 @@ export const EventCard = ({ event }) => {
           <CardMedia
             component="img"
             height="200"
-            image={event.image}
+            image={event.imageUrl}
             alt={event.name}
             style={{ marginBottom: 16 }}
           />
           <Typography gutterBottom>{event.description}</Typography>
           <Typography gutterBottom>Başlama Tarihi: {event.startDate}</Typography>
           <Typography gutterBottom>Bitiş Tarihi: {event.endDate}</Typography>
+          <Typography gutterBottom>Konum: {event.location}</Typography>
           <Typography gutterBottom>Şehir: {event.city}</Typography>
+          <Typography gutterBottom>Ülke: {event.country}</Typography>
+          <Typography gutterBottom>Bilet Fiyatı: {event.ticketPrice}</Typography>
         </DialogContent>
       </Dialog>
     </>

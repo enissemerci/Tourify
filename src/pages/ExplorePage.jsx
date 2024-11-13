@@ -10,7 +10,7 @@ import restaurants from "../images/explore/restaurants.webp";
 
 const categories = [
   {
-    title: "Konumlar",
+    title: "Şehirler",
     image: destinations,
     path: "/beaches",
     description: "Eşsiz manzaralara sahip popüler konumlarını keşfedin.",
@@ -28,7 +28,7 @@ const categories = [
     description: "Konforlu ve unutulmaz bir konaklama deneyimi yaşayın.",
   },
   {
-    title: "Yapılacak Şeyler",
+    title: "Etkinlikler",
     image: events,
     path: "/events",
     description: "Şehrin sunduğu eğlenceli etkinlikleri kaçırmayın.",
@@ -36,7 +36,7 @@ const categories = [
   {
     title: "Restoranlar",
     image: restaurants,
-    path: "/historical",
+    path: "/restaurants",
     description: "Şehrin en iyi lezzet duraklarında yeni tatlar keşfedin.",
   },
   // Diğer kategoriler...

@@ -43,7 +43,7 @@ export const MainHeader = () => {
               KEŞFEDİN
             </Button>
             <Button className="button" color="inherit" href="/past-travels">
-              SEYAHATLAR
+              SEYAHATLER
             </Button>
             <Button className="button" color="inherit" href="/contact">
               İLETİŞİM
@@ -74,7 +74,7 @@ export const MainHeader = () => {
               </MenuItem>
               <MenuItem onClick={handleMenuClose}>
                 <Button className="button" color="inherit" href="/past-travels">
-                  Seyahatlarım
+                  Seyahatlerim
                 </Button>
               </MenuItem>
             </Menu>

@@ -11,10 +11,11 @@ import { PastTravelsPage } from "./pages/PastTravelsPage";
 import { ExplorePage } from "./pages/ExplorePage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { Cities } from "./pages/Cities";
-import { Restaurants } from "./pages/Restaurants";
 import { Events } from "./pages/Events";
 import { Footer } from "./components/homepage/Footer";
 import { MainHeader } from "./components/MainHeader";
+import Restaurants from "./pages/Restaurants";
+
 
 function MainLayout() {
   const location = useLocation();
@@ -28,7 +29,7 @@ function MainLayout() {
         <Route path="/cities" element={<Cities />} />
         <Route path="/city/:cityName" element={<CityPage />} />
         <Route path="/restaurants" element={<Restaurants />} />
-        <Route path="/city/:cityName/restaurant/:restaurantName" element={<RestaurantPage />} />
+        <Route path="/restaurant/:restaurantName"  element={<RestaurantPage />} />
         <Route path="/events" element={<Events />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
