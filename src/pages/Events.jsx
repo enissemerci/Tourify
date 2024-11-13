@@ -12,7 +12,7 @@ export const Events = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get("https://localhost:7130/api/Events/upcoming");
+        const response = await axios.get("https://localhost:7130/api/Events/city/{Istanbul}");
         console.log("Veri başarıyla alındı:", response.data);
         setEvents(response.data.slice(0, 18)); // İlk 18 etkinliği al
       } catch (error) {
