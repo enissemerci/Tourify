@@ -1,107 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import görsel from "../images/categoryEvents.webp";
 import { Typography, Container, Box } from "@mui/material";
 import { EventCard } from "../components/events/EventCard";
 import "../components/events/EventCard.css";
+
 export const Events = () => {
-  const events = [
-    {
-      name: "Etkinlik 1",
-      image: görsel,
-      description: "Bu etkinlik hakkında detaylı açıklama.",
-      startDate: "2024-12-01",
-      endDate: "2024-12-05",
-      city: "İstanbul",
-    },
-    {
-      name: "Etkinlik 2",
-      image: görsel,
-      description: "Bu etkinlik hakkında detaylı açıklama.",
-      startDate: "2024-12-10",
-      endDate: "2024-12-12",
-      city: "Ankara",
-    },
-    {
-      name: "Etkinlik 3",
-      image: görsel,
-      description: "Bu etkinlik hakkında detaylı açıklama.",
-      startDate: "2024-12-15",
-      endDate: "2024-12-20",
-      city: "İzmir",
-    },
-    {
-      name: "Etkinlik 4",
-      image: görsel,
-      description: "Bu etkinlik hakkında detaylı açıklama.",
-      startDate: "2024-12-25",
-      endDate: "2024-12-30",
-      city: "Bursa",
-    },
-    {
-      name: "Etkinlik 1",
-      image: görsel,
-      description: "Bu etkinlik hakkında detaylı açıklama.",
-      startDate: "2024-12-01",
-      endDate: "2024-12-05",
-      city: "İstanbul",
-    },
-    {
-      name: "Etkinlik 2",
-      image: görsel,
-      description: "Bu etkinlik hakkında detaylı açıklama.",
-      startDate: "2024-12-10",
-      endDate: "2024-12-12",
-      city: "Ankara",
-    },
-    {
-      name: "Etkinlik 3",
-      image: görsel,
-      description: "Bu etkinlik hakkında detaylı açıklama.",
-      startDate: "2024-12-15",
-      endDate: "2024-12-20",
-      city: "İzmir",
-    },
-    {
-      name: "Etkinlik 4",
-      image: görsel,
-      description: "Bu etkinlik hakkında detaylı açıklama.",
-      startDate: "2024-12-25",
-      endDate: "2024-12-30",
-      city: "Bursa",
-    },
-    {
-      name: "Etkinlik 1",
-      image: görsel,
-      description: "Bu etkinlik hakkında detaylı açıklama.",
-      startDate: "2024-12-01",
-      endDate: "2024-12-05",
-      city: "İstanbul",
-    },
-    {
-      name: "Etkinlik 2",
-      image: görsel,
-      description: "Bu etkinlik hakkında detaylı açıklama.",
-      startDate: "2024-12-10",
-      endDate: "2024-12-12",
-      city: "Ankara",
-    },
-    {
-      name: "Etkinlik 3",
-      image: görsel,
-      description: "Bu etkinlik hakkında detaylı açıklama.",
-      startDate: "2024-12-15",
-      endDate: "2024-12-20",
-      city: "İzmir",
-    },
-    {
-      name: "Etkinlik 4",
-      image: görsel,
-      description: "Bu etkinlik hakkında detaylı açıklama.",
-      startDate: "2024-12-25",
-      endDate: "2024-12-30",
-      city: "Bursa",
-    },
-  ];
+  const [events, setEvents] = useState([]);
+  const [error, setError] = useState(null); // Hata durumunu tutmak için
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const response = await axios.get("https://localhost:5000/api/Events/upcoming"); // API URL'nizi buraya yazın
+        console.log("Veri başarıyla alındı:", response.data); // Başarılı veri döndüğünde logla
+        setEvents(response.data);
+      } catch (error) {
+        console.error("Etkinlikleri alırken bir hata oluştu:", error.message); // Hata mesajını logla
+        setError("Etkinlikleri alırken bir hata oluştu."); // Kullanıcıya gösterilecek hata mesajı
+      }
+    };
+
+    fetchEvents();
+  }, []);
 
   return (
     <Container>
@@ -113,6 +34,13 @@ export const Events = () => {
       >
         Şehrin Ritmini Yakala! 🥁🎉
       </Typography>
+
+      {error && (
+        <Typography variant="body1" color="error" align="center">
+          {error}
+        </Typography>
+      )}
+
       <Box
         display="flex"
         flexWrap="wrap"
