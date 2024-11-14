@@ -2,12 +2,12 @@
 import React from 'react';
 import { Box, Typography, Container, Divider, Avatar, List, ListItem, ListItemText, ListItemAvatar } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-
+import gorsel from "../images/categoryBeach.webp"
 const beachData = [
   {
     name: "Altınkum Plajı",
     address: "Alaçatı, Çeşme, İzmir",
-    image: "https://via.placeholder.com/100",
+    image: gorsel,
     description: "Ege'nin en güzel plajlarından biri olan Altınkum, altın sarısı kumları ile ünlüdür.",
     naturalBeauty: "Altın sarısı kumlar ve berrak deniz",
     phone: "0232 123 45 67",
@@ -16,7 +16,7 @@ const beachData = [
   {
     name: "Kaputaş Plajı",
     address: "Kaş, Antalya",
-    image: "https://via.placeholder.com/100",
+    image: gorsel,
     description: "Turkuaz rengi denizi ve doğal güzellikleri ile ünlü olan bu plaj, doğa harikası olarak bilinir.",
     naturalBeauty: "Turkuaz deniz ve kayalık çevre",
     phone: "0242 987 65 43",
@@ -25,7 +25,7 @@ const beachData = [
   {
     name: "Patara Plajı",
     address: "Patara, Kaş, Antalya",
-    image: "https://via.placeholder.com/100",
+    image: gorsel,
     description: "Uzun kumsalı ve antik kalıntıları ile ünlü, Türkiye'nin en uzun plajlarından biridir.",
     naturalBeauty: "Tarihi kalıntılar ve uzun kumsal",
     phone: "0242 456 78 90",
@@ -34,7 +34,7 @@ const beachData = [
   {
     name: "İztuzu Plajı",
     address: "Dalyan, Muğla",
-    image: "https://via.placeholder.com/100",
+    image: gorsel,
     description: "Caretta caretta kaplumbağalarının koruma alanı olarak bilinen bir doğa harikasıdır.",
     naturalBeauty: "Koruma alanı ve doğa harikası",
     phone: "0252 654 32 10",

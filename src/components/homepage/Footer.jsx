@@ -19,14 +19,14 @@ export const Footer = () => {
           Tourify Hakkında
           <a href="/">Biz Kimiz</a>
           <a href="/target">Hedef ve Misyonumuz</a>
-          <a href="/calısmalarımız">Çalışmalarımız</a>
+          <a href="/calismalarimiz">Çalışmalarımız</a>
           <a href="/contact">İletişim</a>
         </div>
         <div className="footer-descriptions-explore">
           Keşfedin
-          <a href="/restaurants">Şehirler</a>
-          <a href="">Oteller</a>
-          <a href="/cities">Restoranlar</a>
+          <a href="/cities">Şehirler</a>
+          <a href="hotels">Oteller</a>
+          <a href="/restaurants">Restoranlar</a>
           <a href="/events">Etkinlikler</a>
         </div>
       </div>

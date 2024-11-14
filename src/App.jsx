@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from "react-route
 import './App.css'
 import { HomePage } from "./pages/HomePage";
 import { CityPage } from "./pages/CityPage";
-import { RestaurantPage } from "./pages/RestaurantPage";
 import { LoginPage } from "./pages/LoginPage";
 import { RegisterPage } from "./pages/RegisterPage";
 import { AboutUsPage } from "./pages/AboutUsPage";
@@ -15,6 +14,7 @@ import { Events } from "./pages/Events";
 import { Footer } from "./components/homepage/Footer";
 import { MainHeader } from "./components/MainHeader";
 import Restaurants from "./pages/Restaurants";
+import RestaurantPage from "./pages/RestaurantPage"
 import Beaches from "./pages/Beaches";
 import BeachPage from "./pages/BeachPage";
 import  Hotels  from "./pages/Hotels";
