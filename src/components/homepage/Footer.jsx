@@ -24,9 +24,9 @@ export const Footer = () => {
         </div>
         <div className="footer-descriptions-explore">
           Keşfedin
-          <a href="/restaurants">Restoranlar ve Hoteller</a>
-          <a href="">Tarihi Yapılar</a>
-          <a href="/cities">Şehirler</a>
+          <a href="/restaurants">Şehirler</a>
+          <a href="">Oteller</a>
+          <a href="/cities">Restoranlar</a>
           <a href="/events">Etkinlikler</a>
         </div>
       </div>

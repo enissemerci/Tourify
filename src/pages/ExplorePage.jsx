@@ -12,19 +12,19 @@ const categories = [
   {
     title: "Şehirler",
     image: destinations,
-    path: "/beaches",
+    path: "/cities",
     description: "Eşsiz manzaralara sahip popüler konumlarını keşfedin.",
   },
   {
     title: "Plajlar",
     image: beaches,
-    path: "/historical",
+    path: "/beaches",
     description: "Göz alıcı kumsallarda huzur dolu bir gün geçirin.",
   },
   {
     title: "Oteller",
     image: otels,
-    path: "/nature",
+    path: "/hotels",
     description: "Konforlu ve unutulmaz bir konaklama deneyimi yaşayın.",
   },
   {

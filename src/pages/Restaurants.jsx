@@ -1,3 +1,4 @@
+// Restaurants.jsx
 import React from 'react';
 import { Box, Typography, Container, Divider, Avatar, List, ListItem, ListItemText, ListItemAvatar } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
@@ -33,19 +34,18 @@ export default function Restaurants() {
   const navigate = useNavigate();
 
   const handleClick = (restaurantName) => {
-    // Tıklanan restoranın adına göre bir yönlendirme yapılabilir
     navigate(`/restaurant/${restaurantName}`);
   };
 
   return (
-    <Container>
+    <Container style={{ minHeight: "720px" }}>
       <Typography variant="h4" align="center" gutterBottom>
         Restoranlar
       </Typography>
       <List>
         {restaurantData.map((restaurant, index) => (
           <Box key={index}>
-            <ListItem alignItems="flex-start" button onClick={() => handleClick(restaurant.name)}>
+            <ListItem alignItems="flex-start" component="div" onClick={() => handleClick(restaurant.name)} style={{ cursor: 'pointer' }}>
               <ListItemAvatar>
                 <Avatar
                   alt={restaurant.name}
@@ -54,13 +54,13 @@ export default function Restaurants() {
                 />
               </ListItemAvatar>
               <ListItemText
-                primary={<Typography variant="h6">{restaurant.name}</Typography>}
+                primary={<Typography variant="h6" component="span">{restaurant.name}</Typography>}
                 secondary={
                   <>
-                    <Typography variant="body2" color="textSecondary">
+                    <Typography variant="body2" color="textSecondary" component="span">
                       {restaurant.address}
                     </Typography>
-                    <Typography variant="body2">
+                    <Typography variant="body2" component="span">
                       {restaurant.description}
                     </Typography>
                   </>

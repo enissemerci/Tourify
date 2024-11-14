@@ -29,7 +29,7 @@ export const EventCard = ({ event }) => {
         <CardMedia
           component="img"
           height="200"
-          image={event.imageUrl || gorsel}
+          image={event.imageUrl ? event.imageUrl : gorsel}
           alt={event.name}
         />
         <CardContent>
@@ -46,7 +46,7 @@ export const EventCard = ({ event }) => {
           <CardMedia
             component="img"
             height="200"
-            image={event.imageUrl || gorsel}
+            image={event.imageUrl ? event.imageUrl : gorsel}
             alt={event.name}
             style={{ marginBottom: 16 }}
           />

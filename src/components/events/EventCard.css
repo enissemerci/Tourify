@@ -4,6 +4,9 @@
     display: flex;
     justify-content: center;
 }
+.events{
+    min-height: 700px;
+}
 .events-title{
     padding-top: 50px;
 }

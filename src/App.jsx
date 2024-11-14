@@ -15,6 +15,10 @@ import { Events } from "./pages/Events";
 import { Footer } from "./components/homepage/Footer";
 import { MainHeader } from "./components/MainHeader";
 import Restaurants from "./pages/Restaurants";
+import Beaches from "./pages/Beaches";
+import BeachPage from "./pages/BeachPage";
+import  Hotels  from "./pages/Hotels";
+import HotelPage from "./pages/HotelPage";
 
 
 function MainLayout() {
@@ -30,6 +34,10 @@ function MainLayout() {
         <Route path="/city/:cityName" element={<CityPage />} />
         <Route path="/restaurants" element={<Restaurants />} />
         <Route path="/restaurant/:restaurantName"  element={<RestaurantPage />} />
+        <Route path="/beaches" element={<Beaches />} />
+        <Route path="/beach/:beachName"  element={<BeachPage />} />
+        <Route path="/hotels" element={<Hotels />} />
+        <Route path="/hotel/:hotelName" element={< HotelPage/>} />
         <Route path="/events" element={<Events />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
