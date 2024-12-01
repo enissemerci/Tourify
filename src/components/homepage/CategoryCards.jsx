@@ -20,7 +20,7 @@ export const CategoryCards = () => {
     } else if (index === 3) {
       navigate("/restaurants");
     } else if (index === 4) {
-      navigate("/");
+      navigate("/beaches");
     }
   };
 

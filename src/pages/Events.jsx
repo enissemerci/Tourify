@@ -20,7 +20,7 @@ export const Events = () => {
         setError(`Aradığınız konumda etkinlik bulunmamakta: ${cityName}`);
         setEvents([]);
       } else {
-        setEvents(response.data.slice(0, 9)); // İlk 9 etkinliği al
+        setEvents(response.data.slice(0, 30)); // İlk 9 etkinliği al
         setError(null); // Etkinlik bulunduysa hata mesajını temizle
       }
     } catch (error) {
