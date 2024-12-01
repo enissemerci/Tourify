@@ -19,6 +19,8 @@ import Beaches from "./pages/Beaches";
 import BeachPage from "./pages/BeachPage";
 import  Hotels  from "./pages/Hotels";
 import HotelPage from "./pages/HotelPage";
+import OurMission from "./pages/OurMission";
+import OurWork from "./pages/OurWork";
 
 
 function MainLayout() {
@@ -46,6 +48,10 @@ function MainLayout() {
         <Route path="/past-travels" element={<PastTravelsPage />} />
         <Route path="/explore" element={<ExplorePage />} />
         <Route path="*" element={<NotFoundPage />} />
+        <Route path="/our-mission" element={<OurMission />} />
+        <Route path="/our-work" element={<OurWork />} />
+
+
       </Routes>
       <Footer />
     </div>
