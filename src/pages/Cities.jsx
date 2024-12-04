@@ -28,7 +28,27 @@ export const Cities = () => {
     if (city) {
       fetchCityData();
     }
+    if (user) {
+      fetchFavorites(); // Kullanıcı giriş yaptıysa favorileri çek
+    }
   }, [city]);
+
+  const fetchFavorites = async () => {
+    try {
+      const response = await axios.get(
+        `https://localhost:7130/api/UserFavorites/favorites`,
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
+      const favoritePlaceIds = response.data.map((fav) => fav.placeGoogleId);
+      setFavorites(favoritePlaceIds); // Sadece placeGoogleId değerlerini sakla
+    } catch (err) {
+      console.error("Favoriler alınırken hata oluştu:", err);
+    }
+  };
 
   const fetchCityData = async () => {
     setError("");
@@ -156,7 +176,7 @@ export const Cities = () => {
               onClick={() => handleFavorite(item.googlePlaceId)}
             >
               {favorites.includes(item.googlePlaceId) ? (
-                <FavoriteIcon color="error" /> // Dolu kalp
+                <FavoriteIcon color="error" /> // Kırmızı dolu kalp
               ) : (
                 <FavoriteBorderIcon /> // Boş kalp
               )}
