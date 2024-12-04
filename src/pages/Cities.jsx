@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Box, Typography, TextField, Button, IconButton } from "@mui/material";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"; // Boş kalp
+import FavoriteIcon from "@mui/icons-material/Favorite"; // Dolu kalp
 import MuseumIcon from "@mui/icons-material/Museum";
 import HotelIcon from "@mui/icons-material/Hotel";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
@@ -10,17 +12,19 @@ import Banner from "../assets/video.mp4";
 
 export const Cities = () => {
   const location = useLocation();
-  const [city, setCity] = useState(location.state?.city || ""); // Props ile gelen şehir adı
+  const [city, setCity] = useState(location.state?.city || ""); // Şehir adı
   const [restaurants, setRestaurants] = useState([]);
   const [hotels, setHotels] = useState([]);
   const [museums, setMuseums] = useState([]);
   const [attractions, setAttractions] = useState([]);
+  const [favorites, setFavorites] = useState([]); // Favoriler state
   const [error, setError] = useState("");
   const [filter, setFilter] = useState("all");
   const [isSearchPerformed, setIsSearchPerformed] = useState(false);
 
+  const user = JSON.parse(localStorage.getItem("user")); // Kullanıcı bilgisi
+
   useEffect(() => {
-    // Eğer şehir adı doluysa, otomatik olarak arama yapılır
     if (city) {
       fetchCityData();
     }
@@ -54,6 +58,35 @@ export const Cities = () => {
     } catch (err) {
       console.error("Veriler alınırken hata oluştu:", err);
       setError("Veriler alınırken bir hata oluştu. Lütfen tekrar deneyin.");
+    }
+  };
+
+  const handleFavorite = async (googlePlaceId) => {
+    if (!user || !user.token) {
+      setError("Favorilere eklemek için giriş yapmanız gerekiyor.");
+      return;
+    }
+
+    try {
+      await axios.post(
+        `https://localhost:7130/api/UserFavorites/toggle-favorite/${googlePlaceId}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
+
+      // Favoriler listesini güncelle
+      if (favorites.includes(googlePlaceId)) {
+        setFavorites(favorites.filter((id) => id !== googlePlaceId)); // Favoriden çıkar
+      } else {
+        setFavorites([...favorites, googlePlaceId]); // Favorilere ekle
+      }
+    } catch (err) {
+      console.error("Favorilere eklenirken hata oluştu:", err);
+      setError("Favorilere ekleme sırasında bir hata oluştu.");
     }
   };
 
@@ -104,12 +137,30 @@ export const Cities = () => {
           <Box
             key={index}
             sx={{
+              position: "relative",
               background: "#fff",
               borderRadius: "8px",
               overflow: "hidden",
               boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
             }}
           >
+            {/* Favori İkonu */}
+            <IconButton
+              sx={{
+                position: "absolute",
+                top: 8,
+                right: 8,
+                zIndex: 10,
+                backgroundColor: "rgba(255, 255, 255, 0.8)",
+              }}
+              onClick={() => handleFavorite(item.googlePlaceId)}
+            >
+              {favorites.includes(item.googlePlaceId) ? (
+                <FavoriteIcon color="error" /> // Dolu kalp
+              ) : (
+                <FavoriteBorderIcon /> // Boş kalp
+              )}
+            </IconButton>
             <img
               src={item.imageUrl || "https://via.placeholder.com/300"}
               alt={item.name}
@@ -137,45 +188,45 @@ export const Cities = () => {
     <Box sx={{ minHeight: "720px", p: 3 }}>
       {/* Başlık Görseli */}
       <Box
-  sx={{
-    position: "relative",
-    height: "400px", // Yükseklik resmin doğal oranına göre ayarlanır
-     // Genişlik konteynerin tamamını kaplar
-    overflow: "hidden", // Video taşmasını engeller
-  }}
->
-  <video
-    src={Banner} // Banner yerine video dosyanızın yolu
-    autoPlay
-    loop
-    muted
-    style={{
-      position: "absolute",
-      top: "0",
-      left: "0",
-      width: "100%",
-      height: "100%",
-      objectFit: "contain", // Videonun orantılı olarak görüntülenmesini sağlar
-    }}
-  />
-  <Typography
-    variant="h4"
-    color="white"
-    sx={{
-      position: "absolute",
-      top: "50%",
-      left: "50%",
-      transform: "translate(-50%, -50%)",
-      textShadow: "2px 2px 8px rgba(0,0,0,0.8)",
-      fontWeight: "bold",
-    }}
-  >
-  </Typography>
-</Box>
+        sx={{
+          position: "relative",
+          height: "400px",
+          overflow: "hidden",
+        }}
+      >
+        <video
+          src={Banner}
+          autoPlay
+          loop
+          muted
+          style={{
+            position: "absolute",
+            top: "0",
+            left: "0",
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+        />
+        <Typography
+          variant="h4"
+          color="white"
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            textShadow: "2px 2px 8px rgba(0,0,0,0.8)",
+            fontWeight: "bold",
+          }}
+        >
+          Şehir Keşfi
+        </Typography>
+      </Box>
 
       {/* Şehir Arama */}
       <Box
-        sx={{ display: "flex", justifyContent: "center", mb: 3, gap: 2, paddingTop:"50px" }}
+        sx={{ display: "flex", justifyContent: "center", mb: 3, gap: 2, pt: 4 }}
         component="form"
         onSubmit={handleSearch}
       >
@@ -197,7 +248,6 @@ export const Cities = () => {
         </Typography>
       )}
 
-      {/* Kategori Filtreleri */}
       <Box
         sx={{
           display: "flex",
@@ -229,7 +279,6 @@ export const Cities = () => {
         </IconButton>
       </Box>
 
-      {/* Kategoriler veya Bilgilendirme */}
       {!isSearchPerformed ? (
         <Typography
           variant="h4"

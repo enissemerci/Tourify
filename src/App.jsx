@@ -2,14 +2,11 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from "react-route
 import './App.css'
 import { HomePage } from "./pages/HomePage";
 import { CityPage } from "./pages/CityPage";
-import { LoginPage } from "./pages/LoginPage";
-import { RegisterPage } from "./pages/RegisterPage";
 import { AboutUsPage } from "./pages/AboutUsPage";
 import { ContactPage } from "./pages/ContactPage";
-import { PastTravelsPage } from "./pages/PastTravelsPage";
 import { ExplorePage } from "./pages/ExplorePage";
 import { NotFoundPage } from "./pages/NotFoundPage";
-import { Cities } from "./pages/Cities";
+import  Cities  from "./pages/Cities";
 import { Events } from "./pages/Events";
 import { Footer } from "./components/homepage/Footer";
 import { MainHeader } from "./components/MainHeader";
@@ -22,6 +19,10 @@ import HotelPage from "./pages/HotelPage";
 import OurMission from "./pages/OurMission";
 import OurWork from "./pages/OurWork";
 import WhoWeAre from "./pages/WhoWeAre";
+import RegisterPage from "./pages/RegisterPage";
+import LoginPage from "./pages/LoginPage"
+import  Favorites  from "./pages/Favorites";
+
 
 
 function MainLayout() {
@@ -42,11 +43,11 @@ function MainLayout() {
         <Route path="/hotels" element={<Hotels />} />
         <Route path="/hotel/:hotelName" element={< HotelPage/>} />
         <Route path="/events" element={<Events />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/login" element={< LoginPage/>} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/about-us" element={<AboutUsPage />} />
         <Route path="/contact" element={<ContactPage />} />
-        <Route path="/past-travels" element={<PastTravelsPage />} />
+        <Route path="/favorites" element={<Favorites/>} />
         <Route path="/explore" element={<ExplorePage />} />
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/our-mission" element={<OurMission />} />
