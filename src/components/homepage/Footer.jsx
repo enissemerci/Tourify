@@ -17,7 +17,7 @@ export const Footer = () => {
         />
         <div className="footer-descriptions-about-us">
           Tourify Hakkında
-          <a href="/">Biz Kimiz</a>
+          <a href="/who-we-are">Biz Kimiz</a>
           <a href="/our-mission">Hedef ve Misyonumuz</a>
           <a href="/our-work">Çalışmalarımız</a>
           <a href="/contact">İletişim</a>

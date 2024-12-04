@@ -6,7 +6,7 @@ import RestaurantIcon from "@mui/icons-material/Restaurant";
 import PlaceIcon from "@mui/icons-material/Place";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
-import Banner from "../assets/deneme.jpg";
+import Banner from "../assets/video.mp4";
 
 export const Cities = () => {
   const location = useLocation();
@@ -137,34 +137,45 @@ export const Cities = () => {
     <Box sx={{ minHeight: "720px", p: 3 }}>
       {/* Başlık Görseli */}
       <Box
-        sx={{
-          backgroundImage: `url(${Banner})`,
-          backgroundSize: "contain", // Orijinal boyutta tutar
-          backgroundRepeat: "no-repeat", // Tekrar etmez
-          backgroundPosition: "center",
-          height: "450px", // Yükseklik resmin doğal oranına göre ayarlanır
-          width: "100%", // Genişlik konteynerin tamamını kaplar
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          mb: 3,
-        }}
-      >
-        <Typography
-          variant="h4"
-          color="white"
-          sx={{
-            textShadow: "2px 2px 8px rgba(0,0,0,0.8)",
-            fontWeight: "bold",
-          }}
-        >
-        
-        </Typography>
-      </Box>
+  sx={{
+    position: "relative",
+    height: "400px", // Yükseklik resmin doğal oranına göre ayarlanır
+     // Genişlik konteynerin tamamını kaplar
+    overflow: "hidden", // Video taşmasını engeller
+  }}
+>
+  <video
+    src={Banner} // Banner yerine video dosyanızın yolu
+    autoPlay
+    loop
+    muted
+    style={{
+      position: "absolute",
+      top: "0",
+      left: "0",
+      width: "100%",
+      height: "100%",
+      objectFit: "contain", // Videonun orantılı olarak görüntülenmesini sağlar
+    }}
+  />
+  <Typography
+    variant="h4"
+    color="white"
+    sx={{
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+      textShadow: "2px 2px 8px rgba(0,0,0,0.8)",
+      fontWeight: "bold",
+    }}
+  >
+  </Typography>
+</Box>
 
       {/* Şehir Arama */}
       <Box
-        sx={{ display: "flex", justifyContent: "center", mb: 3, gap: 2 }}
+        sx={{ display: "flex", justifyContent: "center", mb: 3, gap: 2, paddingTop:"50px" }}
         component="form"
         onSubmit={handleSearch}
       >

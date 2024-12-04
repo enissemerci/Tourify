@@ -21,6 +21,7 @@ import  Hotels  from "./pages/Hotels";
 import HotelPage from "./pages/HotelPage";
 import OurMission from "./pages/OurMission";
 import OurWork from "./pages/OurWork";
+import WhoWeAre from "./pages/WhoWeAre";
 
 
 function MainLayout() {
@@ -50,6 +51,8 @@ function MainLayout() {
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/our-mission" element={<OurMission />} />
         <Route path="/our-work" element={<OurWork />} />
+        <Route path="/who-we-are" element={<WhoWeAre />} />
+
 
 
       </Routes>
