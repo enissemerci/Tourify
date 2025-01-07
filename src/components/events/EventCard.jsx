@@ -6,6 +6,7 @@ import {
   Typography,
   Dialog,
   DialogTitle,
+  Button,
   DialogContent,
 } from "@mui/material";
 import gorsel from "../../images/categoryEvents.webp";
@@ -32,17 +33,39 @@ export const EventCard = ({ event }) => {
           image={event.imageUrl ? event.imageUrl : gorsel}
           alt={event.name}
         />
-        <CardContent>
+        <CardContent style={{
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center", // Yatayda ortalama
+      textAlign: "center", // Yazı içeriği ortalama
+    }}>
           <Typography variant="h6" component="div">
             {event.name}
           </Typography>
+          <div
+            style={{ display: "flex", justifyContent: "center", marginTop: 16 }}
+          >
+            <Button
+              variant="contained"
+              onClick={() => window.open(event.url, "_blank")}
+              sx={{
+                backgroundColor: "#3A6D8C", 
+                color: "#ffffff", // Yazı rengi
+                "&:hover": {
+                  backgroundColor: "#1565c0", 
+                },
+              }}
+            >
+              Biletlere Bak
+            </Button>
+          </div>
         </CardContent>
       </Card>
 
       {/* Detaylar için Dialog */}
       <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
         <DialogTitle>{event.name}</DialogTitle>
-        <DialogContent>
+        <DialogContent >
           <CardMedia
             component="img"
             height="200"
@@ -50,7 +73,6 @@ export const EventCard = ({ event }) => {
             alt={event.name}
             style={{ marginBottom: 16 }}
           />
-          <Typography gutterBottom>{event.description}</Typography>
           <Typography gutterBottom>
             Başlama Tarihi: {new Date(event.startDate).toLocaleString()}
           </Typography>
@@ -60,6 +82,30 @@ export const EventCard = ({ event }) => {
           <Typography gutterBottom>Konum: {event.location}</Typography>
           <Typography gutterBottom>Şehir: {event.city}</Typography>
           <Typography gutterBottom>Ülke: {event.country}</Typography>
+          {/* Fiyat Bilgisi */}
+          {event.minPrice != null && event.maxPrice != null && (
+            <Typography gutterBottom>
+              Fiyat Aralığı: {event.minPrice}€ - {event.maxPrice}€
+            </Typography>
+          )}
+          {/* Butonu Ortala */}
+          <div
+            style={{ display: "flex", justifyContent: "center", marginTop: 16 }}
+          >
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: "#3A6D8C", 
+                color: "#ffffff", // Yazı rengi
+                "&:hover": {
+                  backgroundColor: "#1565c0", 
+                },
+              }}
+              onClick={() => window.open(event.url, "_blank")}
+            >
+              Biletini Al
+            </Button>
+          </div>
         </DialogContent>
       </Dialog>
     </>

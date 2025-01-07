@@ -240,7 +240,6 @@ export const Cities = () => {
             fontWeight: "bold",
           }}
         >
-          Şehir Keşfi
         </Typography>
       </Box>
 
