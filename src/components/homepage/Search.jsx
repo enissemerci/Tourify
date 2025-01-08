@@ -1,52 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Search.css';
 import SearchIcon from '@mui/icons-material/Search'; // Material UI Search icon
 
 export const Search = () => {
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState([]);
+  const navigate = useNavigate();
 
-  // API araması için örnek fonksiyon
-  const fetchSearchResults = async (query) => {
-    try {
-      const response = await fetch(`https://api.example.com/search?q=${query}`);
-      const data = await response.json();
-      setResults(data); // Arama sonuçlarını güncelle
-    } catch (error) {
-      console.error('Error fetching search results:', error);
+  const handleSearch = () => {
+    if (query.trim().length >= 3) {
+      navigate('/cities', { state: { city: query } }); // Şehri Cities sayfasına yönlendir
     }
   };
-
-  // 3 harf yazıldığında arama başlat
-  useEffect(() => {
-    if (query.length >= 3) {
-      fetchSearchResults(query);
-    } else {
-      setResults([]); // Arama yapılmazsa sonuçları temizle
-    }
-  }, [query]);
 
   return (
     <div className="search-container">
       <h1>Tourify ile Dünyayı Keşfedin!</h1>
       <div className="search-box">
-        <SearchIcon className="search-icon" /> {/* Material UI Search icon */}
+        <SearchIcon 
+          className="search-icon" 
+          onClick={handleSearch} // İkona tıklandığında arama
+          style={{ cursor: 'pointer' }} // Tıklanabilir işaretçi
+        />
         <input
           type="text"
           placeholder="Search for a city or place..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           className="search-input"
+          onKeyDown={(e) => e.key === 'Enter' && handleSearch()} // Enter tuşuna basıldığında arama
         />
-      </div>
-      <div className="search-results">
-        {results.length > 0 && (
-          <ul>
-            {results.map((item, index) => (
-              <li key={index}>{item.name}</li>
-            ))}
-          </ul>
-        )}
       </div>
     </div>
   );
