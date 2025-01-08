@@ -9,6 +9,9 @@ import PlaceIcon from "@mui/icons-material/Place";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import Banner from "../assets/video.mp4";
+import DirectionsCarIcon from "@mui/icons-material/DirectionsCar"; // Araba ikonu
+import DirectionsCarFilledIcon from "@mui/icons-material/DirectionsCarFilled"; // Dolu araba ikonu
+
 
 export const Cities = () => {
   const location = useLocation();
@@ -21,6 +24,8 @@ export const Cities = () => {
   const [error, setError] = useState("");
   const [filter, setFilter] = useState("all");
   const [isSearchPerformed, setIsSearchPerformed] = useState(false);
+  const [visited, setVisited] = useState([]); // Gezilen yerler state
+
 
   const user = JSON.parse(localStorage.getItem("user")); // Kullanıcı bilgisi
 
@@ -127,82 +132,157 @@ export const Cities = () => {
     return filter === type ? "primary" : "default";
   };
 
-  const renderCategory = (title, data) => (
-    <Box sx={{ mt: 3 }}>
-      <Typography
-        variant="h4"
-        align="center"
-        sx={{
-          mb: 2,
-          fontWeight: "bold",
-          color: "#2F4F4F",
-          textTransform: "uppercase",
-          letterSpacing: "1.5px",
-          fontFamily: "Roboto, sans-serif",
-        }}
-      >
-        {title}
-      </Typography>
-      <Box
-        sx={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          gap: "16px",
-          justifyContent: "center",
-          maxWidth: "80%",
-          margin: "0 auto",
-        }}
-      >
-        {data.map((item, index) => (
-          <Box
-            key={index}
+
+// Gezilen yerleri API'den çek
+const fetchVisited = async () => {
+  if (!user || !user.token) return;
+  try {
+    const response = await axios.get(
+      `https://localhost:7130/api/UserFavorites/visited`,
+      {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      }
+    );
+    const visitedPlaceIds = response.data.map((visited) => visited.placeGoogleId);
+    setVisited(visitedPlaceIds); // Sadece placeGoogleId değerlerini sakla
+  } catch (err) {
+    console.error("Gezilen yerler alınırken hata oluştu:", err);
+  }
+};
+
+// Gezilen yer ekleme/çıkarma işlemi
+const handleVisited = async (googlePlaceId) => {
+  if (!user || !user.token) {
+    setError("Gezilen yerlere eklemek için giriş yapmanız gerekiyor.");
+    return;
+  }
+
+  try {
+    await axios.post(
+      `https://localhost:7130/api/UserFavorites/toggle-visited/${googlePlaceId}`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      }
+    );
+
+    // Gezilen yerler listesini güncelle
+    if (visited.includes(googlePlaceId)) {
+      setVisited(visited.filter((id) => id !== googlePlaceId)); // Listeden çıkar
+    } else {
+      setVisited([...visited, googlePlaceId]); // Listeye ekle
+    }
+  } catch (err) {
+    console.error("Gezilen yer eklenirken hata oluştu:", err);
+    setError("Gezilen yer ekleme sırasında bir hata oluştu.");
+  }
+};
+
+
+const renderCategory = (title, data) => (
+  <Box sx={{ mt: 3 }}>
+    <Typography
+      variant="h4"
+      align="center"
+      sx={{
+        mb: 2,
+        fontWeight: "bold",
+        color: "#2F4F4F",
+        textTransform: "uppercase",
+        letterSpacing: "1.5px",
+        fontFamily: "Roboto, sans-serif",
+      }}
+    >
+      {title}
+    </Typography>
+    <Box
+      sx={{
+        display: "grid",
+        gridTemplateColumns: "repeat(3, 1fr)",
+        gap: "16px",
+        justifyContent: "center",
+        maxWidth: "80%",
+        margin: "0 auto",
+      }}
+    >
+      {data.map((item, index) => (
+        <Box
+          key={index}
+          sx={{
+            position: "relative",
+            background: "#fff",
+            borderRadius: "8px",
+            overflow: "hidden",
+            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+          }}
+        >
+          {/* Favori İkonu */}
+          <IconButton
             sx={{
-              position: "relative",
-              background: "#fff",
-              borderRadius: "8px",
-              overflow: "hidden",
-              boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+              position: "absolute",
+              top: 8,
+              right: 40,
+              zIndex: 10,
+              backgroundColor: "rgba(255, 255, 255, 0.8)",
             }}
+            onClick={() => handleFavorite(item.googlePlaceId)}
           >
-            {/* Favori İkonu */}
-            <IconButton
-              sx={{
-                position: "absolute",
-                top: 8,
-                right: 8,
-                zIndex: 10,
-                backgroundColor: "rgba(255, 255, 255, 0.8)",
-              }}
-              onClick={() => handleFavorite(item.googlePlaceId)}
-            >
-              {favorites.includes(item.googlePlaceId) ? (
-                <FavoriteIcon color="error" /> // Kırmızı dolu kalp
-              ) : (
-                <FavoriteBorderIcon /> // Boş kalp
-              )}
-            </IconButton>
-            <img
-              src={item.imageUrl || "https://via.placeholder.com/300"}
-              alt={item.name}
-              style={{
-                width: "100%",
-                height: "200px",
-                objectFit: "cover",
-              }}
-            />
-            <Box p={2}>
-              <Typography variant="h6" align="center">
-                {item.name}
-              </Typography>
-              <Typography variant="body2" color="textSecondary" align="center">
-                {item.address || "Adres Bilgisi Yok"}
-              </Typography>
-            </Box>
+            {favorites.includes(item.googlePlaceId) ? (
+              <FavoriteIcon color="error" />
+            ) : (
+              <FavoriteBorderIcon />
+            )}
+          </IconButton>
+
+          {/* Gezilen Yer İkonu */}
+          <IconButton
+            sx={{
+              position: "absolute",
+              top: 8,
+              right: 0,
+              zIndex: 10,
+              backgroundColor: "rgba(255, 255, 255, 0.8)",
+            }}
+            onClick={() => handleVisited(item.googlePlaceId)}
+          >
+            {visited.includes(item.googlePlaceId) ? (
+              <DirectionsCarIcon  sx={{ color: "#FFB300" }} />
+            ) : (
+              <DirectionsCarFilledIcon sx={{ color: "" }} />
+            )}
+          </IconButton>
+
+          <img
+            src={item.imageUrl || "https://via.placeholder.com/300"}
+            alt={item.name}
+            style={{
+              width: "100%",
+              height: "200px",
+              objectFit: "cover",
+            }}
+          />
+          <Box p={2}>
+            <Typography variant="h6" align="center">
+              {item.name}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" align="center">
+              {item.address || "Adres Bilgisi Yok"}
+            </Typography>
           </Box>
-        ))}
-      </Box>
+        </Box>
+      ))}
     </Box>
-  );
+  </Box>
+);
+useEffect(() => {
+  if (user) {
+    fetchVisited();
+  }
+}, [user]);
 
   return (
     <Box sx={{ minHeight: "720px", p: 3 }}>

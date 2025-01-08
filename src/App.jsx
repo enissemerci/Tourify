@@ -22,6 +22,7 @@ import WhoWeAre from "./pages/WhoWeAre";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage"
 import  Favorites  from "./pages/Favorites";
+import { PastTravels } from "./pages/PastTravels";
 
 
 
@@ -48,6 +49,7 @@ function MainLayout() {
         <Route path="/about-us" element={<AboutUsPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/favorites" element={<Favorites/>} />
+        <Route path="/past-travels" element={<PastTravels/>} />
         <Route path="/explore" element={<ExplorePage />} />
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/our-mission" element={<OurMission />} />

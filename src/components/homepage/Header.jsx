@@ -58,6 +58,9 @@ function Header() {
           <Button className="button" color="inherit" href="/favorites">
           FAVORİLER
           </Button>
+          <Button className="button" color="inherit" href="/past-travels">
+            GEZİLERİM
+          </Button>
           <Button className="button" color="inherit" href="/contact">
             İLETİŞİM
           </Button>
