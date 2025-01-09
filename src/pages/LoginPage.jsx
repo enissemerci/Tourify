@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(""); // Hata mesajını tutacak state
   const navigate = useNavigate();
 
   const handleLogin = async () => {
@@ -21,7 +22,8 @@ const LoginPage = () => {
       localStorage.setItem("user", JSON.stringify(data));
       navigate("/"); // Başarılı giriş sonrası ana ekrana yönlendirme
     } else {
-      alert("Giriş başarısız! Lütfen bilgilerinizi kontrol edin.");
+      const errorData = await response.json(); // Hata mesajını al
+      setError(errorData.message || "Giriş başarısız! Lütfen bilgilerinizi kontrol edin.");
     }
   };
 
@@ -54,6 +56,11 @@ const LoginPage = () => {
       >
         Giriş Yap
       </Button>
+      {error && (
+        <Typography variant="body2" color="error" style={{ marginTop: "10px", textAlign: "center" }}>
+          {error} {/* Hata mesajını göster */}
+        </Typography>
+      )}
       <Typography variant="body2" style={{ marginTop: "20px", textAlign: "center" }}>
         Hesabınız yok mu?{" "}
         <Button color="secondary" onClick={() => navigate("/register")}>

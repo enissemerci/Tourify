@@ -96,7 +96,7 @@ function Header() {
                 color="inherit"
                 onClick={handleMenuClick}
               >
-                Üyelik <ArrowDropDownIcon />
+                Giriş Yap <ArrowDropDownIcon />
               </Button>
               <Menu
                 anchorEl={anchorEl}

@@ -71,7 +71,7 @@ export const MainHeader = () => {
             <>
               {/* Üyelik butonu */}
               <Button className="dropdownButton" color="inherit" onClick={handleMenuClick}>
-                Üyelik <ArrowDropDownIcon />
+                Giriş Yap <ArrowDropDownIcon />
               </Button>
               <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
                 <MenuItem onClick={handleMenuClose}>

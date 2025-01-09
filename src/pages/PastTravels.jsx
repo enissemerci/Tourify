@@ -154,7 +154,7 @@ export const PastTravels = () => {
     <Box sx={{ minHeight: "720px", p: 3, backgroundColor: "#f9f9f9" }}>
       <Typography
         variant="h4"
-        align="center"
+        align="center" // Başlık ortalandı
         sx={{
           mb: 3,
           fontWeight: "bold",
@@ -178,7 +178,7 @@ export const PastTravels = () => {
       ) : (
         <Typography
           variant="h6"
-          align="center"
+          align="center" // Başlık ortalandı
           sx={{
             mt: 5,
             fontWeight: "bold",
