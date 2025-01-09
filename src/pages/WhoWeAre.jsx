@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, Link } from '@mui/material';
 import WhoWeAreImage from '../assets/citiesbanner.webp'; // Görselinizin doğru yolunu yazın
 
 export const WhoWeAre = () => {
@@ -86,6 +86,36 @@ export const WhoWeAre = () => {
       >
         "Keşfetmek bizim işimiz. Seyahat etmek, sizin."
       </Typography>
+
+      {/* LinkedIn Bağlantıları */}
+      <Box
+        sx={{
+          mt: 4,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
+        <Typography variant="body1" sx={{ color: '#555555', mb: 1 }}>
+          Ekibimizle tanışın:
+        </Typography>
+        <Link 
+          href="https://www.linkedin.com/in/enis-semerci-569762244/" 
+          target="_blank" 
+          underline="hover" 
+          sx={{ fontSize: '18px', mb: 1 }}
+        >
+          Enis Semerci
+        </Link>
+        <Link 
+          href="https://www.linkedin.com/in/aligultan/" 
+          target="_blank" 
+          underline="hover" 
+          sx={{ fontSize: '18px' }}
+        >
+          Ali Gültan
+        </Link>
+      </Box>
     </Box>
   );
 };

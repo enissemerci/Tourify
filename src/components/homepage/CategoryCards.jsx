@@ -3,10 +3,10 @@ import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom"; // Yönlendirme için
 import "./CategoryCards.css";
 
-import kategorişehir from "../../images/categoryCities.webp"
-import kategorihotel from "../../images/categoryHotels.webp"
-import kategorietkinlik from "../../images/categoryEvents.webp"
-import kategorisahil from "../../images/categoryBeach.webp"
+import kategorişehir from "../../images/categoryCities.webp";
+import kategorihotel from "../../images/categoryHotels.webp";
+import kategorietkinlik from "../../images/categoryEvents.webp";
+import kategorisahil from "../../images/categoryBeach.webp";
 
 export const CategoryCards = () => {
   const navigate = useNavigate();
@@ -27,29 +27,29 @@ export const CategoryCards = () => {
   const categories = [
     {
       name: "Şehirler",
-      description: "Explore beautiful cities",
+      description: "Güzel şehirleri keşfedin",
       image: kategorişehir,
     },
     {
       name: "Etkinlikler",
-      description: "Find exciting events",
+      description: "Heyecan verici etkinlikler bulun",
       image: kategorietkinlik,
     },
     {
       name: "Restoranlar",
-      description: "Discover top restaurants",
+      description: "En iyi restoranları keşfedin",
       image: kategorihotel,
     },
     {
       name: "Sahiller",
-      description: "Back to the homepage",
+      description: "Harika sahillerin tadını çıkarın",
       image: kategorisahil,
     },
   ];
 
   return (
     <>
-    <h1 className="title">Kategorilerimiz</h1>
+      <h1 className="title">Kategorilerimiz</h1>
       <div className="category-cards-container">
         {categories.map((category, index) => (
           <Card
@@ -64,10 +64,18 @@ export const CategoryCards = () => {
               image={category.image}
             />
             <CardContent className="cardContent">
-              <Typography variant="h6" component="div">
+              <Typography
+                variant="h6"
+                component="div"
+                align="center" // Başlığı ortalama
+              >
                 {category.name}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                align="center" // Açıklamayı ortalama
+              >
                 {category.description}
               </Typography>
             </CardContent>

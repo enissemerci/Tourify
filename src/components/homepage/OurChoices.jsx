@@ -11,9 +11,9 @@ import {
   Button,
 } from "@mui/material";
 import "./OurChoices.css";
-import secim1 from "../../images/cities/switzerland.jpg"
-import secim2 from "../../images/cities/france.jpg"
-import secim3 from "../../images/cities/bali.jpg"
+import secim1 from "../../images/cities/switzerland.jpg";
+import secim2 from "../../images/cities/france.jpg";
+import secim3 from "../../images/cities/bali.jpg";
 
 export const OurChoices = () => {
   const [open, setOpen] = useState(false);
@@ -39,7 +39,7 @@ export const OurChoices = () => {
       details: "Bali, Endonezya’nın en popüler turistik adalarından biridir ve tropikal iklimi, eşsiz plajları, mistik tapınakları ve zengin kültürel çeşitliliği ile bilinir. Bali, sadece güneş ve deniz tatilcileri için değil, aynı zamanda ruhsal arayış içinde olanlar için de bir cennettir. Ubud’daki pirinç terasları, yoga ve meditasyon merkezleri, Bali’yi bir yenilenme ve huzur noktası haline getirir. Sanat ve el sanatları ile ünlü olan bu ada, Bali halkının kendine özgü yaşam tarzını ve geleneklerini yansıtan festival ve ritüellerle doludur. Ayrıca, dalış ve şnorkelle keşfedilebilecek mercan resifleri ve egzotik su altı yaşamıyla da dikkat çeker.",
       image: secim3,
     },
-];
+  ];
 
   // Dialog'u açma
   const handleOpen = (place) => {
@@ -55,7 +55,9 @@ export const OurChoices = () => {
 
   return (
     <div className="our-choices">
-      <h1>Bizim seçimlerimiz</h1>
+      <Typography variant="h4" align="center" gutterBottom>
+        Bizim seçimlerimiz
+      </Typography>
       <div className="our-choices-container">
         {places.map((place, index) => (
           <Card
@@ -70,10 +72,10 @@ export const OurChoices = () => {
               style={{ height: 300, objectFit: "cover" }}
             />
             <CardContent>
-              <Typography variant="h6" component="div">
+              <Typography variant="h6" align="center">
                 {place.name}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" color="text.secondary" align="center">
                 {place.description}
               </Typography>
             </CardContent>
@@ -82,7 +84,7 @@ export const OurChoices = () => {
 
         {/* Dialog (Popup) */}
         <Dialog open={open} onClose={handleClose}>
-          <DialogTitle>{selectedPlace?.name}</DialogTitle>
+          <DialogTitle align="center">{selectedPlace?.name}</DialogTitle>
           <DialogContent>
             <Typography variant="body1">{selectedPlace?.details}</Typography>
           </DialogContent>
