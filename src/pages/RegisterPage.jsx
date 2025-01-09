@@ -6,6 +6,7 @@ const RegisterPage = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(""); // Hata mesajını tutacak state
   const navigate = useNavigate();
 
   const handleRegister = async () => {
@@ -21,7 +22,8 @@ const RegisterPage = () => {
       alert("Kayıt başarılı! Giriş yapabilirsiniz.");
       navigate("/login"); // Başarılı kayıt sonrası giriş ekranına yönlendirme
     } else {
-      alert("Kayıt başarısız! Lütfen bilgilerinizi kontrol edin.");
+      const errorData = await response.json(); // Hata mesajını al
+      setError(errorData.message || "Kayıt başarısız! Lütfen bilgilerinizi kontrol edin.");
     }
   };
 
@@ -61,6 +63,11 @@ const RegisterPage = () => {
       >
         Kaydol
       </Button>
+      {error && (
+        <Typography variant="body2" color="error" style={{ marginTop: "10px", textAlign: "center" }}>
+          {error} {/* Hata mesajını göster */}
+        </Typography>
+      )}
       <Typography variant="body2" style={{ marginTop: "20px", textAlign: "center" }}>
         Zaten hesabınız var mı?{" "}
         <Button color="secondary" onClick={() => navigate("/login")}>
