@@ -1,19 +1,33 @@
 import React, { useState, useEffect } from "react";
-import { Box, Typography, IconButton } from "@mui/material";
+import { Box, Typography, IconButton, TextField } from "@mui/material";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar"; // Araba ikonu
 import DirectionsCarFilledIcon from "@mui/icons-material/DirectionsCarFilled"; // Dolu araba ikonu
 import axios from "axios";
 
 export const PastTravels = () => {
   const [visitedPlaces, setVisitedPlaces] = useState([]); // Geçmiş gezilen yerler
+  const [filteredPlaces, setFilteredPlaces] = useState([]); // Arama sonucu filtrelenmiş yerler
   const [error, setError] = useState("");
   const [tempVisitedPlaces, setTempVisitedPlaces] = useState([]); // Geçici ziyaret edilen yerler (ikon durumu için)
+  const [searchTerm, setSearchTerm] = useState(""); // Arama terimi
 
   const user = JSON.parse(localStorage.getItem("user")); // Kullanıcı bilgisi
 
   useEffect(() => {
     fetchVisitedPlaces();
   }, []);
+
+  useEffect(() => {
+    if (searchTerm === "") {
+      setFilteredPlaces(tempVisitedPlaces); // Eğer arama terimi boşsa, tüm yerleri göster
+    } else {
+      setFilteredPlaces(
+        tempVisitedPlaces.filter((place) =>
+          place.placeName.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+      );
+    }
+  }, [searchTerm, tempVisitedPlaces]);
 
   const fetchVisitedPlaces = async () => {
     setError("");
@@ -34,13 +48,17 @@ export const PastTravels = () => {
       );
       console.log("Gelen Gezilen Yerler:", response.data);
       setVisitedPlaces(response.data || []);
-      setTempVisitedPlaces(response.data.map(place => ({
-        ...place,
-        hasVisited: place.hasVisited // Geçici durum
-      })));
+      setTempVisitedPlaces(
+        response.data.map((place) => ({
+          ...place,
+          hasVisited: place.hasVisited, // Geçici durum
+        }))
+      );
     } catch (err) {
       console.error("Gezilen yerler alınırken hata oluştu:", err);
-      setError("Gezilen yerler alınırken bir hata oluştu. Lütfen tekrar deneyin.");
+      setError(
+        "Gezilen yerler alınırken bir hata oluştu. Lütfen tekrar deneyin."
+      );
     }
   };
 
@@ -51,7 +69,7 @@ export const PastTravels = () => {
     }
 
     // Ikon değişikliği için yerin geçici durumunu güncelle
-    const updatedPlaces = tempVisitedPlaces.map(item =>
+    const updatedPlaces = tempVisitedPlaces.map((item) =>
       item.placeGoogleId === place.placeGoogleId
         ? { ...item, hasVisited: !item.hasVisited }
         : item
@@ -86,7 +104,7 @@ export const PastTravels = () => {
         margin: "0 auto",
       }}
     >
-      {tempVisitedPlaces.map((item, index) => (
+      {filteredPlaces.map((item, index) => (
         <Box
           key={index}
           sx={{
@@ -132,7 +150,8 @@ export const PastTravels = () => {
               bottom: 0,
               width: "100%",
               height: "50%",
-              background: "linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)",
+              background:
+                "linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)",
               color: "#fff",
               display: "flex",
               flexDirection: "column",
@@ -143,7 +162,9 @@ export const PastTravels = () => {
             <Typography variant="h6" sx={{ fontWeight: "bold" }}>
               {item.placeName}
             </Typography>
-            <Typography variant="body2">{item.address || "Adres Bilgisi Yok"}</Typography>
+            <Typography variant="body2">
+              {item.address || "Adres Bilgisi Yok"}
+            </Typography>
           </Box>
         </Box>
       ))}
@@ -172,6 +193,26 @@ export const PastTravels = () => {
           {error}
         </Typography>
       )}
+
+      {/* Arama çubuğu */}
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          mb: 3,
+        }}
+      >
+        <TextField
+          label="Yer ara"
+          variant="outlined"
+          size="small"
+          fullWidth
+          sx={{ maxWidth: "400px" }} // Küçük bir genişlik sınırı
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </Box>
 
       {visitedPlaces.length > 0 ? (
         renderVisitedPlaces()

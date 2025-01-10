@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Box, Typography, IconButton } from "@mui/material";
+import { Box, Typography, IconButton, TextField } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import axios from "axios";
 
 const Favorites = () => {
   const [favorites, setFavorites] = useState([]); // Favoriler
   const [error, setError] = useState("");
+  const [searchTerm, setSearchTerm] = useState(""); // Arama terimi
 
   const user = JSON.parse(localStorage.getItem("user")); // Kullanıcı bilgisi
 
@@ -75,6 +76,14 @@ const Favorites = () => {
     }
   };
 
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const filteredFavorites = favorites.filter((item) =>
+    item.placeName.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   const renderFavorites = () => (
     <Box
       sx={{
@@ -86,7 +95,7 @@ const Favorites = () => {
         margin: "0 auto",
       }}
     >
-      {favorites.map((item, index) => (
+      {filteredFavorites.map((item, index) => (
         <Box
           key={index}
           sx={{
@@ -154,7 +163,19 @@ const Favorites = () => {
         </Typography>
       )}
 
-      {favorites.length > 0 ? (
+      {/* Arama Çubuğu */}
+      <Box sx={{ display: "flex", justifyContent: "center", mb: 3 }}>
+        <TextField
+          label="Favorilerde Ara"
+          variant="outlined"
+          size="small"
+          value={searchTerm}
+          onChange={handleSearch}
+          sx={{ maxWidth: "400px" }}
+        />
+      </Box>
+
+      {filteredFavorites.length > 0 ? (
         renderFavorites()
       ) : (
         <Typography
